@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 1em;
+}
+::-webkit-scrollbar-track {
+  background: #b9b9b9;
+  border-radius: 100vw;
+  margin: 0.4em 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #303030;
+  border-radius: 100vw;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", -apple-system;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 5px 30px;
+  scroll-behavior: smooth;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+::selection {
+  color: #fff;
+  background-color: #5c636a8a;
+}

@@ -1,0 +1,21 @@
+input {
+    &:focus {
+        box-shadow: none !important;
+    }
+    border: none !important;
+}
+
+.fa-eye, .fa-eye-slash {
+    position: relative;
+    color: #777;
+    top: -28px;
+    left: -19px;
+    cursor: pointer;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: clamp(1.6rem, 2.5vh, .8rem);
+    letter-spacing: 2px;
+    color: #555;
+}
