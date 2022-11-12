@@ -20,7 +20,7 @@ const Cart = () => {
   };
 
   return (
-    <div className={`card cart`} style={{ width: "18rem" }}>
+    <div className={`card cart shadow`} style={{ width: "18rem" }}>
       <button
         type="button"
         className="btn-close m-2"

@@ -1,20 +1,17 @@
 import { Fragment, useContext } from "react";
 import { CartContext } from "../context/cart.context";
 const CheckOutItem = ({ item }) => {
-  const { cartItems, setCartItems, addItemToCart, removeFromCart } =
+  const { addItemToCart, removeFromCart, clearItemFormCart } =
     useContext(CartContext);
   let { name, quantity, price, imageUrl } = item;
 
   const removeItem = () => {
-    setCartItems(cartItems.filter((product) => product !== item));
+    clearItemFormCart(item);
   };
 
-  if (quantity < 1) {
-    removeItem();
-  } 
-  if (quantity > 10) {
-    alert(`Ok stop it we know you're rich`)
-  }
+  // if (quantity < 1) {
+  //   removeItem();
+  // }
 
   return (
     <Fragment>

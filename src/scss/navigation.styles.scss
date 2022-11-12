@@ -43,11 +43,11 @@
     position: relative;
     font-size: 35px;
     span {
-      position: fixed;
+      position: absolute;
       font-size: 12px;
       color: white;
-      right:40px;
-      margin-top: 8px;
+      right:13px;
+      top: 5px;
     }
   }
 }

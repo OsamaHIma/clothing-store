@@ -18,14 +18,17 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="card-body d-flex justify-content-between">
           <p className="card-text d-inline">{name}</p>
-          <span className="d-inline text-success">{price}$</span>
+          <span className="d-inline text-success">${price}</span>
         </div>
         <button
           className="btn btn-success w-50 mx-auto"
           onClick={addProductToCart}
         >
           Add to cart
-          <i className="fa fa-cart-plus mx-2" aria-hidden="true"></i>
+          <i
+            className="fa-solid fa-cart-arrow-down mx-2"
+            aria-hidden="true"
+          ></i>
         </button>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from "react";
+import { createContext, useReducer } from "react";
 
 export const CartContext = createContext({
   cartItems: [],
@@ -7,6 +7,10 @@ export const CartContext = createContext({
   removeFromCart: () => {},
   cartTotal: [],
 });
+
+const INITIAL_VALUES = {
+  cartItems: [],
+};
 
 export const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
@@ -24,45 +28,70 @@ export const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
-export const removeCartItem = (cartItems, productToAdd) => {
+export const removeCartItem = (cartItems, productToRemove) => {
   const existingCartItem = cartItems.find(
-    (cartItem) => cartItem.id === productToAdd.id
+    (cartItem) => cartItem.id === productToRemove.id
   );
 
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
-      cartItem.id === productToAdd.id
+      cartItem.id === productToRemove.id
         ? { ...cartItem, quantity: cartItem.quantity - 1 }
         : cartItem
     );
   }
 };
 
-export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
-  const [cartTotal, setCartTotal] = useState(0);
+const cartReducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "SET-CART-ITEMS":
+      return {
+        ...state,
+        ...payload,
+      };
+    default:
+      throw new Error(`unknown type ${type}`);
+  }
+};
 
-  useEffect(() => {
-    const newCartCount = cartItems.reduce(
+export const CartProvider = ({ children }) => {
+  const [{ cartItems, cartCount, cartTotal }, dispatch] = useReducer(
+    cartReducer,
+    INITIAL_VALUES
+  );
+
+  const updateCartItems = (newCartItems) => {
+    const newCartCount = newCartItems.reduce(
       (total, item) => total + item.quantity,
       0
     );
-    setCartCount(newCartCount);
-  }, [cartItems]);
-  useEffect(() => {
-    const newCartCount = cartItems.reduce(
+    const newCartTotal = newCartItems.reduce(
       (total, item) => total + item.quantity * item.price,
       0
     );
-    setCartTotal(newCartCount);
-  }, [cartItems]);
+    dispatch({
+      type: "SET-CART-ITEMS",
+      payload: {
+        cartItems: newCartItems,
+        cartTotal: newCartTotal,
+        cartCount: newCartCount,
+      },
+    });
+  };
 
   const addItemToCart = (product) => {
-    setCartItems(addCartItem(cartItems, product));
+    const newCartItems = addCartItem(cartItems, product);
+    updateCartItems(newCartItems);
   };
   const removeFromCart = (product) => {
-    setCartItems(removeCartItem(cartItems, product));
+    const newCartItems = removeCartItem(cartItems, product);
+    updateCartItems(newCartItems);
+  };
+
+  const clearItemFormCart = (item) => {
+    const newCartItems = cartItems.filter((product) => product !== item);
+    updateCartItems(newCartItems);
   };
 
   const value = {
@@ -70,8 +99,8 @@ export const CartProvider = ({ children }) => {
     cartItems,
     cartCount,
     cartTotal,
-    setCartItems,
     removeFromCart,
+    clearItemFormCart,
   };
   return (
     <CartContext.Provider value={value}> {children} </CartContext.Provider>

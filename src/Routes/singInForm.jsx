@@ -14,7 +14,6 @@ const defaultProps = {
 };
 
 const SignIn = () => {
-  console.log("singin1");
   const [formFields, setFormFields] = useState(defaultProps);
   const { email, password } = formFields;
 
@@ -26,7 +25,6 @@ const SignIn = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
-      console.log("singin2");
       await signInUserWithEmailAndPassword(email, password);
       restFormFields();
     } catch (err) {
@@ -108,7 +106,7 @@ const SignIn = () => {
             onClick={SignInWithGoogle}
           >
             Sign In with Google
-            <i class="fab fa-google ms-3" aria-hidden="true"></i>
+            <i className="fab fa-google ms-3" aria-hidden="true"></i>
           </button>
         </form>
       </div>
