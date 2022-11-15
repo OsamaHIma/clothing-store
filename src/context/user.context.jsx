@@ -9,11 +9,11 @@ export const UserContext = createContext({
   setCurrentUser: () => null,
 });
 
-const userReducer = (sate, action) => {
+const userReducer = (state, action) => {
   switch (action.type) {
     case "setCurrentUser":
       return {
-        ...sate,
+        ...state,
         currentUser: action.payload,
       };
     default:
