@@ -12,15 +12,15 @@ const Category = () => {
     setProducts(categoriesMap[category]);
   }, [categoriesMap, category]);
   return (
-    <>
+    <section className={`${category}-category`} aria-label={`${category} category`}>
       <h2 className="mx-auto">{category.toUpperCase()}</h2>
-      <div className="row">
+      <div className="row" aria-label={`${category} products`}>
         {products &&
           products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
       </div>
-    </>
+    </section>
   );
 };
 export default Category;

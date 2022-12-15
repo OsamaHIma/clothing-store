@@ -1,11 +1,9 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import FormInput from "../components/formInput";
 import {
   signInUserWithEmailAndPassword,
   signIN,
-  createUserDocument,
 } from "../utils/firebase/firebase";
-import { UserContext } from "../context/user.context";
 import "../scss/singForm.styles.scss";
 
 const defaultProps = {
@@ -60,9 +58,9 @@ const SignIn = () => {
   };
 
   return (
-    <div className="sign-in col-md-6">
+    <section className="sign-in col-md-6">
       {console.log("singin4")}
-      <div className="container">
+      <section className="container">
         <h2 className="mb-4">Have an account?</h2>
         <p>Sign in with Email and Password OR Google Sign in </p>
         <form onSubmit={submitHandler} className="my-md-4 w-md-75">
@@ -109,8 +107,8 @@ const SignIn = () => {
             <i className="fab fa-google ms-3" aria-hidden="true"></i>
           </button>
         </form>
-      </div>
-    </div>
+      </section>
+    </section>
   );
 };
 

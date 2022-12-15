@@ -1,15 +1,16 @@
-import { useContext } from "react";
-import { CartContext } from "../context/cart.context";
+// import { useContext } from "react";
+// import { CartContext } from "../context/cart.context";
+import { addItemToCart } from "../store/features/cartSlice";
 
 const ProductCard = ({ product }) => {
-  const { addItemToCart } = useContext(CartContext);
+  // const { addItemToCart } = useContext(CartContext);
   const addProductToCart = () => addItemToCart(product);
 
   const { name, imageUrl, price } = product;
 
   return (
-    <div className="col-md-3 my-2">
-      <div className="card pb-3">
+    <section className="col-md-3 my-2" aria-label="Product card">
+      <article className="card pb-3">
         <div
           className="image-container"
           style={{ height: "300px", overflow: "hidden" }}
@@ -18,7 +19,7 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="card-body d-flex justify-content-between">
           <p className="card-text d-inline">{name}</p>
-          <span className="d-inline text-success">${price}</span>
+          <p className="d-inline text-success">${price}</p>
         </div>
         <button
           className="btn btn-success w-50 mx-auto"
@@ -30,8 +31,8 @@ const ProductCard = ({ product }) => {
             aria-hidden="true"
           ></i>
         </button>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 

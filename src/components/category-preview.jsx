@@ -3,20 +3,20 @@ import ProductCard from "./product-card";
 
 const CategoryPreview = ({ title, products }) => {
   return (
-    <div className="category-preview container">
+    <section className="category-preview container" aria-label="Category name">
       <h2>
         <Link className="btn" to={title}>
           {title.toUpperCase()}
         </Link>
       </h2>
-      <div className="row">
+      <section className="row" aria-label="category products">
         {products
           .filter((_, idx) => idx < 4)
           .map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-      </div>
-    </div>
+      </section>
+    </section>
   );
 };
 export default CategoryPreview;

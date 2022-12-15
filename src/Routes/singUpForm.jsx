@@ -5,7 +5,7 @@ import {
   addUserWithEmailAndPassword,
   createUserDocument,
 } from "../utils/firebase/firebase";
-import { UserContext } from "../context/user.context";
+import { setCurrentUser } from "../store/features/userSlice";
 
 import "../scss/singForm.styles.scss";
 
@@ -17,15 +17,12 @@ const defaultProps = {
 };
 
 const SignUp = () => {
-  console.log("singup1");
   const [formFields, setFormFields] = useState(defaultProps);
   const { displayName, email, password, confirmPassword } = formFields;
-  const { setCurrentUser } = useContext(UserContext);
 
   const onChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
-    console.log("singup2");
   };
 
   const submitHandler = async (event) => {
@@ -35,7 +32,6 @@ const SignUp = () => {
       return;
     }
     try {
-      console.log("singup3");
       const { user } = await addUserWithEmailAndPassword(email, password);
       setCurrentUser(user);
       const res = await createUserDocument(user, { displayName });
@@ -48,6 +44,8 @@ const SignUp = () => {
   const restFormFields = () => {
     setFormFields(defaultProps);
   };
+
+  // toggle show and hide password
 
   const toggleIcon = (event) => {
     const passFormInputs = Array.from(

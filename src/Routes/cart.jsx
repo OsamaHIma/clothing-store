@@ -7,9 +7,10 @@ import { useContext } from "react";
 import { CartContext } from "../context/cart.context";
 
 import "../scss/cart.scss";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems } = useSelector(store => store.cart);
   const navigate = useNavigate();
   const checkOut = () => {
     if (cartItems.length) {

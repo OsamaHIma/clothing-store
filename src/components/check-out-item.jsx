@@ -1,8 +1,13 @@
 import { Fragment, useContext } from "react";
-import { CartContext } from "../context/cart.context";
+// import { CartContext } from "../context/cart.context";
+import {
+  addItemToCart,
+  removeFromCart,
+  clearItemFormCart,
+} from "../store/features/cartSlice";
 const CheckOutItem = ({ item }) => {
-  const { addItemToCart, removeFromCart, clearItemFormCart } =
-    useContext(CartContext);
+  // const { addItemToCart, removeFromCart, clearItemFormCart } =
+  //   useContext(CartContext);
   let { name, quantity, price, imageUrl } = item;
 
   const removeItem = () => {
@@ -14,9 +19,9 @@ const CheckOutItem = ({ item }) => {
   // }
 
   return (
-    <Fragment>
+    <article aria-label="checkout item">
       <hr />
-      <div className="row checkoutItem">
+      <section className="row checkoutItem" aria-label="checkout item">
         <div className="col-md-4 ps-0">
           <img
             src={imageUrl}
@@ -25,7 +30,7 @@ const CheckOutItem = ({ item }) => {
           />
         </div>
         <div className="col-md-2 my-auto">
-          <h5>{name}</h5>{" "}
+          <h5>{name}</h5>
         </div>
         <div className="col-md-2 my-auto">
           <i
@@ -40,7 +45,7 @@ const CheckOutItem = ({ item }) => {
             onClick={() => addItemToCart(item)}
           ></i>
         </div>
-        <div className="col-md-2 my-auto">{price}</div>
+        <p className="col-md-2 my-auto">{price}</p>
         <div className="col-md-2 my-auto">
           <button
             type="button"
@@ -49,8 +54,8 @@ const CheckOutItem = ({ item }) => {
             onClick={removeItem}
           ></button>
         </div>
-      </div>
-    </Fragment>
+      </section>
+    </article>
   );
 };
 

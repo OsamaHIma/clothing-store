@@ -16,6 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    list-style: none;
 
     .nav-link {
       color: #333;
@@ -46,7 +47,7 @@
       position: absolute;
       font-size: 12px;
       color: white;
-      right:13px;
+      right: 13px;
       top: 5px;
     }
   }

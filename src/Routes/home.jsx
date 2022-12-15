@@ -35,10 +35,10 @@ const Home = () => {
   ];
 
   return (
-    <div>
+    <section aria-label="Home">
       <Directory categories={categories} />
       <Outlet />
-    </div>
+    </section>
   );
 };
 

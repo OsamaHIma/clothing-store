@@ -7,6 +7,7 @@ import { CartContext } from "../context/cart.context";
 import Cart from "./cart";
 import "../scss/navigation.styles.scss";
 import "../scss/cart.scss";
+import { useSelector } from "react-redux";
 
 export const toggleClass = () => {
   const cart = document.querySelector(".cart");
@@ -15,33 +16,45 @@ export const toggleClass = () => {
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { cartCount } = useContext(CartContext);
+  // const currentUser = useSelector((state) => state.user.currentUser);
+  console.log("currentUser", currentUser);
+  const { cartCount } = useSelector((store) => store.cart);
   return (
     <Fragment>
-      <div className="navigation">
+      <nav className="navigation">
         <Link className="logo-container" to={"/"}>
           <CrownLogo />
         </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to={"/shop"}>
-            SHOP
-          </Link>
-          {currentUser ? (
-            <span className="nav-link" onClick={SignOutUser}>
-              Sing Out
-            </span>
-          ) : (
-            <Link className="nav-link" to={"/auth"}>
-              SIGN IN
+        <ul className="nav-links-container">
+          <li>
+            <Link className="nav-link" to={"/shop"}>
+              SHOP
             </Link>
-          )}
-          <Link className="" onClick={toggleClass}>
-            <i className="fa fa-shopping-cart" aria-hidden="true">
-              <span>{cartCount > 0 ? cartCount : null}</span>
-            </i>
-          </Link>
-        </div>
-      </div>
+          </li>
+          <li>
+            {currentUser ? (
+              <p className="nav-link" onClick={SignOutUser}>
+                Sing Out
+              </p>
+            ) : (
+              <Link className="nav-link" to={"/auth"}>
+                SIGN IN
+              </Link>
+            )}
+          </li>
+          <li>
+            <Link
+              className="Cart-icon"
+              aria-label="cart icon"
+              onClick={toggleClass}
+            >
+              <i className="fa fa-shopping-cart" aria-hidden="true">
+                <span>{cartCount > 0 ? cartCount : null}</span>
+              </i>
+            </Link>
+          </li>
+        </ul>
+      </nav>
       <Cart />
       <Outlet />
     </Fragment>

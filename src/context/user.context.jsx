@@ -4,6 +4,8 @@ import {
   createUserDocument,
 } from "../utils/firebase/firebase";
 
+import createAction from "../utils/reducer";
+
 export const UserContext = createContext({
   currentUser: null,
   setCurrentUser: () => null,
@@ -21,13 +23,15 @@ const userReducer = (state, action) => {
   }
 };
 
+const INITIAL_STATE = {
+  currentUser: null,
+};
+
 export const UserProvider = ({ children }) => {
-  const [{ currentUser }, dispatch] = useReducer(userReducer, {
-    currentUser: null,
-  });
+  const [{ currentUser }, dispatch] = useReducer(userReducer, INITIAL_STATE);
   console.log(currentUser);
   const setCurrentUser = (user) =>
-    dispatch({ type: "setCurrentUser", payload: user });
+    dispatch(createAction("setCurrentUser", user));
 
   const value = { currentUser, setCurrentUser };
   useEffect(() => {
