@@ -69,7 +69,7 @@ export const getCollection = async () => {
     acc[title.toLowerCase()] = items;
     return acc;
   }, {});
-  return categoryMap
+  return categoryMap;
 };
 
 // Creating user document and if it doesn't exist create new one
@@ -108,6 +108,13 @@ export const signInUserWithEmailAndPassword = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
-export const SignOutUser = async () => await signOut(auth);
+export const SignOutUser = async () => {
+  const text = "you sure?";
+  if (window.confirm(text) === true) {
+    await signOut(auth);
+  } else {
+    return;
+  }
+};
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);

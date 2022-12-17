@@ -4,9 +4,6 @@ const initialState = {
   cartItems: [],
   cartCount: 0,
   cartTotal: 0,
-  addItemToCart: () => {},
-  setCartItems: () => {},
-  removeFromCart: () => {},
 };
 
 export const addCartItem = (cartItems, productToAdd) => {
@@ -43,36 +40,35 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    updateCartItems: (state, action) => {
-      const newCartItems = action.payload;
-      const newCartCount = newCartItems.reduce(
+    updateCartItems: ({ cartItems, cartTotal, cartCount }, { payload }) => {
+      // const newCartItems = payload;
+      const newCartCount = payload.reduce(
         (total, item) => total + item.quantity,
         0
       );
-      const newCartTotal = newCartItems.reduce(
+      const newCartTotal = payload.reduce(
         (total, item) => total + item.quantity * item.price,
         0
       );
-      state.cartItems = newCartItems;
-      state.cartTotal = newCartTotal;
-      state.cartCount = newCartCount;
+      cartItems = payload;
+      cartTotal = newCartTotal;
+      cartCount = newCartCount;
     },
-    addItemToCart: (state, payload) => {
-      const product = payload.product;
-      const newCartItems = addCartItem(state.cartItems, product);
-      updateCartItems(newCartItems);
+    addItemToCart: ({ cartItems }, { payload }) => {
+      // const product = payload;
+      const newCartItems = addCartItem(cartItems, payload);
+      console.log(newCartItems, cartItems);
+      cartSlice.actions.updateCartItems(newCartItems);
     },
-    removeFromCart: (state, payload) => {
-      const product = payload.product;
-      const newCartItems = removeCartItem(state.cartItems, product);
+    removeFromCart: ({ cartItems }, { payload }) => {
+      // const product = payload;
+      const newCartItems = removeCartItem(cartItems, payload);
       updateCartItems(newCartItems);
     },
 
-    clearItemFormCart: (state, payload) => {
-      const item = payload.item;
-      const newCartItems = state.cartItems.filter(
-        (product) => product !== item
-      );
+    clearItemFormCart: ({ cartItems }, { payload }) => {
+      // const item = payload;
+      const newCartItems = cartItems.filter((product) => product !== payload);
       updateCartItems(newCartItems);
     },
   },

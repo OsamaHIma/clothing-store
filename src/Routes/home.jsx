@@ -35,7 +35,7 @@ const Home = () => {
   ];
 
   return (
-    <section aria-label="Home">
+    <section aria-label="Home container">
       <Directory categories={categories} />
       <Outlet />
     </section>

@@ -40,7 +40,7 @@
 //   if (existingCartItem) {
 //     return cartItems.map((cartItem) =>
 //       cartItem.id === productToRemove.id
-//         ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        // ? { ...cartItem, quantity: cartItem.quantity - 1 }
 //         : cartItem
 //     );
 //   }

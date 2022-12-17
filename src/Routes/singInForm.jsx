@@ -59,7 +59,6 @@ const SignIn = () => {
 
   return (
     <section className="sign-in col-md-6">
-      {console.log("singin4")}
       <section className="container">
         <h2 className="mb-4">Have an account?</h2>
         <p>Sign in with Email and Password OR Google Sign in </p>
@@ -94,7 +93,7 @@ const SignIn = () => {
           <hr />
           <button
             type="submit"
-            className="btn px-5 py-3 text-white bg-dark mt-3"
+            className="btn px-5 py-3 mt-3 submit"
           >
             Sign In
           </button>

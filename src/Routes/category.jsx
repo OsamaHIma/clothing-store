@@ -12,8 +12,8 @@ const Category = () => {
     setProducts(categoriesMap[category]);
   }, [categoriesMap, category]);
   return (
-    <section className={`${category}-category`} aria-label={`${category} category`}>
-      <h2 className="mx-auto">{category.toUpperCase()}</h2>
+    <section className={`${category}-category container-fluid`} aria-label={`${category} category`}>
+      <h2 className="mx-auto ms-3">{category.toUpperCase()}</h2>
       <div className="row" aria-label={`${category} products`}>
         {products &&
           products.map((product) => (

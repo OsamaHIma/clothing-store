@@ -1,10 +1,9 @@
-// import { useContext } from "react";
-// import { CartContext } from "../context/cart.context";
+import { useDispatch } from "react-redux";
 import { addItemToCart } from "../store/features/cartSlice";
 
 const ProductCard = ({ product }) => {
-  // const { addItemToCart } = useContext(CartContext);
-  const addProductToCart = () => addItemToCart(product);
+  const dispatch = useDispatch();
+  const addProductToCart = () => dispatch(addItemToCart(product));
 
   const { name, imageUrl, price } = product;
 

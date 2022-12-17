@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { CartContext } from "../context/cart.context";
 import CheckOutItem from "../components/check-out-item";
 import "../scss/check-out-item.scss";
+import { useSelector } from "react-redux";
 const CheckOut = () => {
-  const { cartItems , cartTotal} = useContext(CartContext);
+  const { cartItems, cartTotal } = useSelector((store) => store.cart);
   return (
     <section className="container" aria-label="checkout section">
       <article className="row">

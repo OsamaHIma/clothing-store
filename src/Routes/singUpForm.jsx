@@ -1,11 +1,12 @@
 // import { async } from "@firebase/util";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import FormInput from "../components/formInput";
 import {
   addUserWithEmailAndPassword,
   createUserDocument,
 } from "../utils/firebase/firebase";
 import { setCurrentUser } from "../store/features/userSlice";
+import { useDispatch } from "react-redux";
 
 import "../scss/singForm.styles.scss";
 
@@ -17,6 +18,7 @@ const defaultProps = {
 };
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultProps);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -33,7 +35,7 @@ const SignUp = () => {
     }
     try {
       const { user } = await addUserWithEmailAndPassword(email, password);
-      setCurrentUser(user);
+      dispatch(setCurrentUser(user));
       const res = await createUserDocument(user, { displayName });
       restFormFields();
     } catch (err) {
@@ -65,7 +67,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="sign-up col-md-6">
+    <section className="sign-up col-md-6">
       {console.log("singup4")}
       <h2 className="mb-4">Don't have an account?</h2>
       <p>Sign Up with Email and Password</p>
@@ -122,11 +124,14 @@ const SignUp = () => {
           minLength={6}
         />
         <hr />
-        <button type="submit" className="btn px-5 py-3 text-center text-white bg-dark mt-3">
+        <button
+          type="submit"
+          className="btn submit px-5 py-3 text-center mt-3"
+        >
           Sign Up
         </button>
       </form>
-    </div>
+    </section>
   );
 };
 

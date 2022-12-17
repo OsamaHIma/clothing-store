@@ -9,10 +9,14 @@ import {
   onAuthStateChangedListener,
   createUserDocument,
 } from "./utils/firebase/firebase";
-import { setCurrentUser } from "./store/user/user.action";
+import { setCurrentUser } from "./store/features/userSlice";
 import { useDispatch } from "react-redux";
-
+import Footer from "./Routes/footer";
+import Loader from "./components/loader";
 const App = () => {
+  window.addEventListener("load", () => {
+    document.querySelector(".loader-wrapper").classList.add("fade-out");
+  });
   const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
@@ -25,11 +29,15 @@ const App = () => {
   }, []);
   return (
     <Routes>
-      <Route path="/" element={<Navigation />}>
-        <Route index element={<Home />} />
-        <Route path="auth" element={<Authentication />} />
-        <Route path="shop/*" element={<Shop />} />
-        <Route path="check-out" element={<CheckOut />} />
+      <Route path="/" element={<Loader />}>
+        <Route path="/" element={<Navigation />}>
+          <Route path="/" element={<Footer />}>
+            <Route index element={<Home />} />
+            <Route path="auth" element={<Authentication />} />
+            <Route path="shop/*" element={<Shop />} />
+            <Route path="check-out" element={<CheckOut />} />
+          </Route>
+        </Route>
       </Route>
     </Routes>
   );

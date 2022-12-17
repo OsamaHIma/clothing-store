@@ -3,14 +3,12 @@ import { toggleClass } from "./navigation";
 
 import { useNavigate } from "react-router-dom";
 
-import { useContext } from "react";
-import { CartContext } from "../context/cart.context";
-
 import "../scss/cart.scss";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const { cartItems } = useSelector(store => store.cart);
+  const { cartItems } = useSelector((store) => store.cart);
+  console.log(cartItems);
   const navigate = useNavigate();
   const checkOut = () => {
     if (cartItems.length) {

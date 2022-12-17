@@ -1,4 +1,5 @@
 import { Fragment, useContext } from "react";
+import { useDispatch } from "react-redux";
 // import { CartContext } from "../context/cart.context";
 import {
   addItemToCart,
@@ -8,10 +9,11 @@ import {
 const CheckOutItem = ({ item }) => {
   // const { addItemToCart, removeFromCart, clearItemFormCart } =
   //   useContext(CartContext);
+  const dispatch = useDispatch();
   let { name, quantity, price, imageUrl } = item;
 
   const removeItem = () => {
-    clearItemFormCart(item);
+    dispatch(clearItemFormCart(item));
   };
 
   // if (quantity < 1) {
@@ -36,13 +38,13 @@ const CheckOutItem = ({ item }) => {
           <i
             className="fa fa-chevron-left chevron"
             aria-hidden="true"
-            onClick={() => removeFromCart(item)}
+            onClick={() => dispatch(removeFromCart(item))}
           ></i>
           <span>{quantity}</span>
           <i
             className="fa fa-chevron-right chevron"
             aria-hidden="true"
-            onClick={() => addItemToCart(item)}
+            onClick={() => dispatch(addItemToCart(item))}
           ></i>
         </div>
         <p className="col-md-2 my-auto">{price}</p>

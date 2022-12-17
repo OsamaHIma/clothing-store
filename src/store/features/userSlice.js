@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useEffect } from "react";
 import {
   onAuthStateChangedListener,
   createUserDocument,
@@ -6,7 +7,6 @@ import {
 
 const initialState = {
   currentUser: null,
-  // setCurrentUser: () => null,
 };
 
 const userSlice = createSlice({
@@ -20,4 +20,16 @@ const userSlice = createSlice({
 });
 
 export const { setCurrentUser } = userSlice.actions;
+
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChangedListener((user) => {
+  //     if (user) {
+  //       createUserDocument(user);
+  //     }
+  //     setCurrentUser(user);
+  //   });
+  //   return unsubscribe;
+  // }, []);
+
+
 export default userSlice.reducer;

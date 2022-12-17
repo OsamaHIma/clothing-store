@@ -4,7 +4,7 @@ import ProductCard from "./product-card";
 const CategoryPreview = ({ title, products }) => {
   return (
     <section className="category-preview container" aria-label="Category name">
-      <h2>
+      <h2 className="ms-2">
         <Link className="btn" to={title}>
           {title.toUpperCase()}
         </Link>

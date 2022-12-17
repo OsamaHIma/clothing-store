@@ -1,3 +1,3 @@
-import createAction from "../../utils/reducer";
+// import createAction from "../../utils/reducer";
 
-export const setCurrentUser = (user) => createAction("setCurrentUser", user);
+// export const setCurrentUser = (user) => createAction("setCurrentUser", user);

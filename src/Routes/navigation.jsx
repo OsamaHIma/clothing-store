@@ -1,9 +1,6 @@
-import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../images/crown.svg";
-import { UserContext } from "../context/user.context";
 import { SignOutUser } from "../utils/firebase/firebase";
-import { CartContext } from "../context/cart.context";
 import Cart from "./cart";
 import "../scss/navigation.styles.scss";
 import "../scss/cart.scss";
@@ -15,12 +12,11 @@ export const toggleClass = () => {
 };
 
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext);
-  // const currentUser = useSelector((state) => state.user.currentUser);
+  const { currentUser } = useSelector((store) => store.user);
   console.log("currentUser", currentUser);
   const { cartCount } = useSelector((store) => store.cart);
   return (
-    <Fragment>
+    <>
       <nav className="navigation">
         <Link className="logo-container" to={"/"}>
           <CrownLogo />
@@ -33,7 +29,7 @@ const Navigation = () => {
           </li>
           <li>
             {currentUser ? (
-              <p className="nav-link" onClick={SignOutUser}>
+              <p className="nav-link mb-0" onClick={SignOutUser}>
                 Sing Out
               </p>
             ) : (
@@ -43,11 +39,7 @@ const Navigation = () => {
             )}
           </li>
           <li>
-            <Link
-              className="Cart-icon"
-              aria-label="cart icon"
-              onClick={toggleClass}
-            >
+            <Link className="Cart-icon" aria-label="Cart" onClick={toggleClass}>
               <i className="fa fa-shopping-cart" aria-hidden="true">
                 <span>{cartCount > 0 ? cartCount : null}</span>
               </i>
@@ -57,7 +49,7 @@ const Navigation = () => {
       </nav>
       <Cart />
       <Outlet />
-    </Fragment>
+    </>
   );
 };
 
