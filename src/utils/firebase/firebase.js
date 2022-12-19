@@ -55,7 +55,6 @@ export const addCollection = async (collectionKey, objects) => {
     batch.set(docRef, object);
   });
   await batch.commit();
-  console.log("done");
 };
 
 // Getting data from firebase
@@ -75,7 +74,6 @@ export const getCollection = async () => {
 // Creating user document and if it doesn't exist create new one
 
 export const createUserDocument = async (user, additionalInfo = {}) => {
-  console.log("firebase1");
   if (!user) return;
   const userDocRef = doc(dataBase, "users", user.uid);
   const userSnapShoot = await getDoc(userDocRef);
@@ -97,20 +95,17 @@ export const createUserDocument = async (user, additionalInfo = {}) => {
 };
 
 export const addUserWithEmailAndPassword = async (email, password) => {
-  console.log("firebase2");
   if (!email || !password) return;
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
 export const signInUserWithEmailAndPassword = async (email, password) => {
-  console.log("firebase3");
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
 export const SignOutUser = async () => {
-  const text = "you sure?";
-  if (window.confirm(text) === true) {
+  if (window.confirm("you sure?") === true) {
     await signOut(auth);
   } else {
     return;

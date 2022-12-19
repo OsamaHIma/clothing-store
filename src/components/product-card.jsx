@@ -1,9 +1,12 @@
 import { useDispatch } from "react-redux";
-import { addItemToCart } from "../store/features/cartSlice";
+import { addItemToCart, updateCartItems } from "../store/features/cartSlice";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-  const addProductToCart = () => dispatch(addItemToCart(product));
+  const addProductToCart = () => {
+    dispatch(addItemToCart(product));
+    dispatch(updateCartItems())
+  };
 
   const { name, imageUrl, price } = product;
 

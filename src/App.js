@@ -4,7 +4,7 @@ import Navigation from "./Routes/navigation";
 import Authentication from "./Routes/authentication";
 import Shop from "./Routes/shop";
 import CheckOut from "./Routes/check out";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   onAuthStateChangedListener,
   createUserDocument,
@@ -12,12 +12,16 @@ import {
 import { setCurrentUser } from "./store/features/userSlice";
 import { useDispatch } from "react-redux";
 import Footer from "./Routes/footer";
-import Loader from "./components/loader";
+import ClipLoader from "react-spinners/ClipLoader";
 const App = () => {
-  window.addEventListener("load", () => {
-    document.querySelector(".loader-wrapper").classList.add("fade-out");
-  });
+  const override = {
+    borderColor: "#eee",
+  };
+  let [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  useEffect(() => {
+      setLoading(false);
+  }, []);
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
@@ -28,18 +32,31 @@ const App = () => {
     return unsubscribe;
   }, []);
   return (
-    <Routes>
-      <Route path="/" element={<Loader />}>
-        <Route path="/" element={<Navigation />}>
-          <Route path="/" element={<Footer />}>
-            <Route index element={<Home />} />
-            <Route path="auth" element={<Authentication />} />
-            <Route path="shop/*" element={<Shop />} />
-            <Route path="check-out" element={<CheckOut />} />
+    <>
+      {loading ? (
+        <div className="loader-wrapper">
+        <ClipLoader
+          color={"#222"}
+          loading={loading}
+          cssOverride={override}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+        </div>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Navigation />}>
+            <Route path="/" element={<Footer />}>
+              <Route index element={<Home />} />
+              <Route path="auth" element={<Authentication />} />
+              <Route path="shop/*" element={<Shop />} />
+              <Route path="check-out" element={<CheckOut />} />
+            </Route>
           </Route>
-        </Route>
-      </Route>
-    </Routes>
+        </Routes>
+      )}
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import {
   addItemToCart,
   removeFromCart,
   clearItemFormCart,
+  updateCartItems,
 } from "../store/features/cartSlice";
 const CheckOutItem = ({ item }) => {
   // const { addItemToCart, removeFromCart, clearItemFormCart } =
@@ -12,13 +13,25 @@ const CheckOutItem = ({ item }) => {
   const dispatch = useDispatch();
   let { name, quantity, price, imageUrl } = item;
 
-  const removeItem = () => {
-    dispatch(clearItemFormCart(item));
+  const increaseItem = () => {
+    dispatch(addItemToCart(item));
+    dispatch(updateCartItems());
   };
 
-  // if (quantity < 1) {
-  //   removeItem();
-  // }
+  const decreaseItem = () => {
+    dispatch(removeFromCart(item));
+    dispatch(updateCartItems());
+  };
+
+  const removeItem = () => {
+    dispatch(clearItemFormCart(item));
+    dispatch(updateCartItems());
+  };
+
+
+  if (quantity < 1) {
+    removeItem();
+  }
 
   return (
     <article aria-label="checkout item">
@@ -38,13 +51,13 @@ const CheckOutItem = ({ item }) => {
           <i
             className="fa fa-chevron-left chevron"
             aria-hidden="true"
-            onClick={() => dispatch(removeFromCart(item))}
+            onClick={decreaseItem}
           ></i>
-          <span>{quantity}</span>
+          <p className="m-0 d-inline-block">{quantity}</p>
           <i
             className="fa fa-chevron-right chevron"
             aria-hidden="true"
-            onClick={() => dispatch(addItemToCart(item))}
+            onClick={increaseItem}
           ></i>
         </div>
         <p className="col-md-2 my-auto">{price}</p>

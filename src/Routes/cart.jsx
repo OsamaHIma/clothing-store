@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   const { cartItems } = useSelector((store) => store.cart);
-  console.log(cartItems);
   const navigate = useNavigate();
   const checkOut = () => {
     if (cartItems.length) {

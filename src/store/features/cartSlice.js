@@ -40,36 +40,31 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    updateCartItems: ({ cartItems, cartTotal, cartCount }, { payload }) => {
-      // const newCartItems = payload;
-      const newCartCount = payload.reduce(
+    updateCartItems: (state, { payload }) => {
+      const newCartCount = state.cartItems.reduce(
         (total, item) => total + item.quantity,
         0
       );
-      const newCartTotal = payload.reduce(
+      const newCartTotal = state.cartItems.reduce(
         (total, item) => total + item.quantity * item.price,
         0
       );
-      cartItems = payload;
-      cartTotal = newCartTotal;
-      cartCount = newCartCount;
+      state.cartTotal = newCartTotal;
+      state.cartCount = newCartCount;
     },
-    addItemToCart: ({ cartItems }, { payload }) => {
-      // const product = payload;
-      const newCartItems = addCartItem(cartItems, payload);
-      cartSlice.actions.updateCartItems(newCartItems);
-      console.log(newCartItems, cartItems);
+    addItemToCart: (state, { payload }) => {
+      const newCartItems = addCartItem(state.cartItems, payload);
+      state.cartItems = newCartItems;
     },
-    removeFromCart: ({ cartItems }, { payload }) => {
-      // const product = payload;
-      const newCartItems = removeCartItem(cartItems, payload);
-      updateCartItems(newCartItems);
+    removeFromCart: (state, { payload }) => {
+      const newCartItems = removeCartItem(state.cartItems, payload);
+      state.cartItems = newCartItems;
     },
-
-    clearItemFormCart: ({ cartItems }, { payload }) => {
-      // const item = payload;
-      const newCartItems = cartItems.filter((product) => product !== payload);
-      updateCartItems(newCartItems);
+    clearItemFormCart: (state, {payload}) => {
+      const newCartItems = state.cartItems.filter(
+        (product) => product.id !== payload.id
+      );
+      state.cartItems = newCartItems;
     },
   },
 });

@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../scss/categories.styles.scss";
 const CARD = ({ category }) => {
-  console.log("card");
   const { id, title, imageUrl, route } = category;
   const navigateUser = useNavigate();
   const onNavigateHandler = () => navigateUser(route);
