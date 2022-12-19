@@ -57,8 +57,8 @@ const cartSlice = createSlice({
     addItemToCart: ({ cartItems }, { payload }) => {
       // const product = payload;
       const newCartItems = addCartItem(cartItems, payload);
-      console.log(newCartItems, cartItems);
       cartSlice.actions.updateCartItems(newCartItems);
+      console.log(newCartItems, cartItems);
     },
     removeFromCart: ({ cartItems }, { payload }) => {
       // const product = payload;
