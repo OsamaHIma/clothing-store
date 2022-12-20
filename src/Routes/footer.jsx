@@ -5,7 +5,7 @@ const Footer = () => {
   const Year = new Date().getFullYear();
   return (
     <>
-      <Outlet />
+    <Outlet />
       <footer className="footer" aria-label="Footer section">
         <section className="row container-fluid">
           <section className="col-md-3 copyright">

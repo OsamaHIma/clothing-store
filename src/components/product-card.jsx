@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
   const { name, imageUrl, price } = product;
 
   return (
-    <section className="col-md-3 my-2" aria-label="Product card">
+    <article className="col-md-3 my-2" aria-label="Product card">
       <article className="card pb-3">
         <div
           className="image-container"
@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
           ></i>
         </button>
       </article>
-    </section>
+    </article>
   );
 };
 

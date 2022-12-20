@@ -8,8 +8,7 @@ import {
   updateCartItems,
 } from "../store/features/cartSlice";
 const CheckOutItem = ({ item }) => {
-  // const { addItemToCart, removeFromCart, clearItemFormCart } =
-  //   useContext(CartContext);
+  
   const dispatch = useDispatch();
   let { name, quantity, price, imageUrl } = item;
 
@@ -60,7 +59,7 @@ const CheckOutItem = ({ item }) => {
             onClick={increaseItem}
           ></i>
         </div>
-        <p className="col-md-2 my-auto">{price}</p>
+        <p className="col-md-2 my-auto">${price}</p>
         <div className="col-md-2 my-auto">
           <button
             type="button"

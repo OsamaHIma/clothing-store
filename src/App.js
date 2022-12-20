@@ -13,6 +13,7 @@ import { setCurrentUser } from "./store/features/userSlice";
 import { useDispatch } from "react-redux";
 import Footer from "./Routes/footer";
 import ClipLoader from "react-spinners/ClipLoader";
+import "./scss/loader.scss";
 const App = () => {
   const override = {
     borderColor: "#eee",
@@ -20,7 +21,7 @@ const App = () => {
   let [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
-      setLoading(false);
+    setLoading(false);
   }, []);
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
@@ -35,24 +36,24 @@ const App = () => {
     <>
       {loading ? (
         <div className="loader-wrapper">
-        <ClipLoader
-          color={"#222"}
-          loading={loading}
-          cssOverride={override}
-          size={150}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        />
+          <ClipLoader
+            color={"#222"}
+            loading={loading}
+            cssOverride={override}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
         </div>
       ) : (
         <Routes>
           <Route path="/" element={<Navigation />}>
-            <Route path="/" element={<Footer />}>
+            {/* <Route path="/" element={<Footer />}> */}
               <Route index element={<Home />} />
               <Route path="auth" element={<Authentication />} />
               <Route path="shop/*" element={<Shop />} />
               <Route path="check-out" element={<CheckOut />} />
-            </Route>
+            {/* </Route> */}
           </Route>
         </Routes>
       )}

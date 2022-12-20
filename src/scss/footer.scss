@@ -4,6 +4,9 @@
     margin-left: 0!important;
 }
 .footer {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
     width: 100%;
     background-color: #222;
     padding: 1.7rem 1rem 1rem;

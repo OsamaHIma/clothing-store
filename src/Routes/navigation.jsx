@@ -5,6 +5,7 @@ import Cart from "./cart";
 import "../scss/navigation.styles.scss";
 import "../scss/cart.scss";
 import { useSelector } from "react-redux";
+import { Tooltip } from "bootstrap";
 
 export const toggleClass = () => {
   const cart = document.querySelector(".cart");
@@ -12,8 +13,17 @@ export const toggleClass = () => {
 };
 
 const Navigation = () => {
+
+  const tooltipTriggerList = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]'
+  );
+  const tooltipList = [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
+  );
+
   const { currentUser } = useSelector((store) => store.user);
   console.log("currentUser", currentUser);
+
   const { cartCount } = useSelector((store) => store.cart);
   return (
     <>
@@ -39,7 +49,14 @@ const Navigation = () => {
             )}
           </li>
           <li>
-            <Link className="Cart-icon" aria-label="Cart" onClick={toggleClass}>
+            <Link
+              aria-label="Cart"
+              className="ms-3 btn btn-light px-4 border border-secondary text-center"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              data-bs-title="Shopping cart"
+              onClick={toggleClass}
+            >
               <i className="fa fa-shopping-cart" aria-hidden="true">
                 <span>{cartCount > 0 ? cartCount : null}</span>
               </i>
