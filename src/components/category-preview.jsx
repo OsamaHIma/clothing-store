@@ -3,17 +3,17 @@ import ProductCard from "./product-card";
 
 const CategoryPreview = ({ title, products }) => {
   return (
-    <section className="category-preview container" aria-label="Category name">
-      <h3 className="ms-3 d-inline-block">{title.toUpperCase()}</h3>
-      <p className="d-inline-block">
-        <Link
-          className="nav-link"
-          to={title}
-          style={{ position: "fixed", right: "25px" }}
-        >
+    <section
+      className="category-preview container"
+      aria-label={`${title}-category`}
+    >
+      <div className="category-text-container d-flex justify-content-between">
+        <h3 className="mr-3">{title.toUpperCase()}</h3>
+        <Link className="nav-link" to={title}>
+          {/* // style={{ position: "absolute", right: "25px" }} */}
           See more
         </Link>
-      </p>
+      </div>
       <section className="row" aria-label="category products">
         {products
           .filter((_, idx) => idx < 4)

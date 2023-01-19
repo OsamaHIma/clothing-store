@@ -53,13 +53,13 @@ const SignUp = () => {
     const passFormInputs = Array.from(
       document.querySelectorAll(".sign-up .pass")
     );
-    if (event.target.className === "fa fa-eye float-end") {
-      event.target.className = "fa fa-eye-slash float-end";
+    if (event.target.className === "fa fa-eye float-right") {
+      event.target.className = "fa fa-eye-slash float-right";
       passFormInputs.forEach((FormInput) => {
         FormInput.setAttribute("type", "text");
       });
     } else {
-      event.target.className = "fa fa-eye float-end";
+      event.target.className = "fa fa-eye float-right";
       passFormInputs.forEach((FormInput) => {
         FormInput.setAttribute("type", "password");
       });
@@ -107,7 +107,7 @@ const SignUp = () => {
           minLength={6}
         />
         <i
-          className="fa fa-eye float-end"
+          className="fa fa-eye float-right"
           id="togglePass"
           onClick={toggleIcon}
         />

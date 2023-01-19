@@ -1,6 +1,5 @@
-import { Fragment, useContext } from "react";
 import { useDispatch } from "react-redux";
-// import { CartContext } from "../context/cart.context";
+
 import {
   addItemToCart,
   removeFromCart,
@@ -8,7 +7,6 @@ import {
   updateCartItems,
 } from "../store/features/cartSlice";
 const CheckOutItem = ({ item }) => {
-  
   const dispatch = useDispatch();
   let { name, quantity, price, imageUrl } = item;
 
@@ -27,7 +25,6 @@ const CheckOutItem = ({ item }) => {
     dispatch(updateCartItems());
   };
 
-
   if (quantity < 1) {
     removeItem();
   }
@@ -36,10 +33,10 @@ const CheckOutItem = ({ item }) => {
     <article aria-label="checkout item">
       <hr />
       <section className="row checkoutItem" aria-label="checkout item">
-        <div className="col-md-4 ps-0">
+        <div className="col-md-4 pr-0">
           <img
             src={imageUrl}
-            className="img-fluid rounded-start w-50"
+            className="img-fluid rounded-right w-50"
             alt={name}
           />
         </div>
@@ -61,12 +58,12 @@ const CheckOutItem = ({ item }) => {
         </div>
         <p className="col-md-2 my-auto">${price}</p>
         <div className="col-md-2 my-auto">
-          <button
-            type="button"
-            className="btn-close m-2 me-auto"
-            aria-label="Close"
-            onClick={removeItem}
-          ></button>
+        <i
+        className="fa-solid fa-xmark m-3 mt-1 fa-xl"
+        type="button"
+        aria-label="Remove item"
+        onClick={removeItem}
+      ></i>
         </div>
       </section>
     </article>

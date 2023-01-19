@@ -19,12 +19,14 @@ const Cart = () => {
 
   return (
     <div className={`card cart shadow`} style={{ width: "18rem" }}>
-      <button
+      <i
+        className="fa-solid fa-xmark m-3 mt-1 fa-xl"
         type="button"
-        className="btn-close m-2"
+        // className=""
         aria-label="Close"
         onClick={toggleClass}
-      ></button>
+      ></i>
+
       <div className="card-body text-center" style={{ height: "20rem" }}>
         <h5>Cart</h5>
         {cartItems.length ? (

@@ -7,7 +7,7 @@
     -moz-transition: 0.2s all ease-in-out;
     -ms-transition: 0.2s all ease-in-out;
     -o-transition: 0.2s all ease-in-out;
-    z-index: 9;
+    z-index: 999999;
     border: 2px solid #888;
     border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -17,8 +17,10 @@
     overflow-y: auto;
     visibility: hidden;
     opacity: 0;
+    transform: translateY(8px);
 }
-.show {
+.cart.show {
+    transform: translateY(0px);
     visibility: visible;
     opacity: 1;
     cursor: unset;

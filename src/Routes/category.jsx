@@ -15,7 +15,7 @@ const Category = () => {
       className={`${category}-category container-fluid`}
       aria-label={`${category} category`}
     >
-      <h2 className="mx-auto ms-3">{category.toUpperCase()}</h2>
+      <h2 className="mx-auto ml-3">{category.toUpperCase()}</h2>
       <div className="row" aria-label={`${category} products`}>
         {products &&
           products.map((product) => (

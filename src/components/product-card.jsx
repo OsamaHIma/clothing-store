@@ -17,19 +17,20 @@ const ProductCard = ({ product }) => {
           className="image-container"
           style={{ height: "300px", overflow: "hidden" }}
         >
-          <img src={imageUrl} className="card-img-top" alt={`${name}`} />
+          <img src={imageUrl} className="card-img-top" alt={name} />
         </div>
         <div className="card-body d-flex justify-content-between">
           <p className="card-text d-inline">{name}</p>
           <p className="d-inline text-success">${price}</p>
         </div>
         <button
-          className="btn btn-success w-50 mx-auto"
+        type="button"
+          className="btn btn-success w-50 mx-auto px-2"
           onClick={addProductToCart}
         >
           Add to cart
           <i
-            className="fa-solid fa-cart-arrow-down mx-2"
+            className="fa-solid fa-cart-arrow-down ml-2"
             aria-hidden="true"
           ></i>
         </button>

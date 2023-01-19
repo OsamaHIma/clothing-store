@@ -13,6 +13,8 @@ import { setCurrentUser } from "./store/features/userSlice";
 import { useDispatch } from "react-redux";
 import Footer from "./Routes/footer";
 import ClipLoader from "react-spinners/ClipLoader";
+import ScrollToTopBtn from "./components/scroll to top btn";
+
 import "./scss/loader.scss";
 const App = () => {
   const override = {
@@ -48,7 +50,7 @@ const App = () => {
       ) : (
         <Routes>
           <Route path="/" element={<Navigation />}>
-            {/* <Route path="/" element={<Footer />}> */}
+            {/* <Route path="/" element={<ScrollToTopBtn />}> */}
               <Route index element={<Home />} />
               <Route path="auth" element={<Authentication />} />
               <Route path="shop/*" element={<Shop />} />

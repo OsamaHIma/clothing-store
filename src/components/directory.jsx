@@ -1,10 +1,13 @@
-import CARD from "./card";
+// import CARD from "./card";
+import CarouselItem from "./carousel-item";
+
 const Directory = ({ categories }) => {
   return (
     <section className="container-custom container-fluid">
       {categories.map((category) => (
-        <CARD key={category.id} category={category} />
-      ))}
+        <CarouselItem key={category.id} category={category} />
+      ))
+      }
     </section>
   );
 };

@@ -44,13 +44,13 @@ const SignIn = () => {
     const passFormInputs = Array.from(
       document.querySelectorAll(".sign-in .pass")
     );
-    if (event.target.className === "fa fa-eye float-end") {
-      event.target.className = "fa fa-eye-slash float-end";
+    if (event.target.className === "fa fa-eye float-right") {
+      event.target.className = "fa fa-eye-slash float-right";
       passFormInputs.forEach((FormInput) => {
         FormInput.setAttribute("type", "text");
       });
     } else {
-      event.target.className = "fa fa-eye float-end";
+      event.target.className = "fa fa-eye float-right";
       passFormInputs.forEach((FormInput) => {
         FormInput.setAttribute("type", "password");
       });
@@ -86,7 +86,7 @@ const SignIn = () => {
             minLength={6}
           />
           <i
-            className="fa fa-eye float-end"
+            className="fa fa-eye float-right"
             id="togglePass"
             onClick={toggleIcon}
           />
@@ -99,11 +99,11 @@ const SignIn = () => {
           </button>
           <button
             type="button"
-            className="btn btn-primary px-3 py-3 mt-3 ms-5"
+            className="btn btn-primary px-3 py-3 mt-3 ml-5"
             onClick={SignInWithGoogle}
           >
             Sign In with Google
-            <i className="fab fa-google ms-3" aria-hidden="true"></i>
+            <i className="fab fa-google ml-3" aria-hidden="true"></i>
           </button>
         </form>
       </section>
