@@ -5,7 +5,9 @@ import Cart from "./cart";
 import "../scss/navigation.styles copy.scss";
 import "../scss/cart.scss";
 import { useSelector } from "react-redux";
-import { Tooltip } from "bootstrap";
+import ScrollToTopBtn from "../components/scroll to top btn";
+
+// import { Tooltip } from "bootstrap";
 
 export const toggleClass = () => {
   const cart = document.querySelector(".cart");
@@ -13,12 +15,12 @@ export const toggleClass = () => {
 };
 
 const Navigation = () => {
-  const tooltipTriggerList = document.querySelectorAll(
-    '[data-bs-toggle="tooltip"]'
-  );
-  const tooltipList = [...tooltipTriggerList].map(
-    (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
-  );
+  // const tooltipTriggerList = document.querySelectorAll(
+  //   '[data-bs-toggle="tooltip"]'
+  // );
+  // const tooltipList = [...tooltipTriggerList].map(
+  //   (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
+  // );
 
   const { currentUser } = useSelector((store) => store.user);
   console.log(currentUser);
@@ -102,59 +104,6 @@ const Navigation = () => {
               className="collapse navbar-collapse ml-auto"
               id="navbarSupportedContent"
             >
-              {/* <form className="form-inline my-2 my-lg-0 ml-3"> */}
-              {/* <input
-                  className="form-control search-bar"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                /> */}
-              {/* <div className="dropdown ">
-                  <a
-                    className="nav-link dropdown-toggle py-1 pb-1 form-control border-left-0"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Select category
-                  </a>
-                  <div
-                    className="dropdown-menu dropdown-costume"
-                    aria-labelledby="navbarDropdown"
-                  >
-                    <label>
-                      Men
-                      <input
-                        type="checkbox"
-                        className="ml-1 form-control dropdown-item"
-                      />
-                    </label>
-                    <label>
-                      Women
-                      <input
-                        type="checkbox"
-                        className="ml-1 form-control dropdown-item"
-                      />
-                    </label>
-                    <label className="">
-                      Children
-                      <input
-                        type="checkbox"
-                        className="ml-1 form-control dropdown-item"
-                      />
-                    </label>
-                  </div>
-                </div> */}
-              {/* <button
-                  className="btn my-2 my-sm-0 form-control search-btn"
-                  type="submit"
-                >
-                  Search
-                </button>
-              </form> */}
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item active">
                   <Link className="nav-link px-3" to={"/"}>
@@ -164,9 +113,9 @@ const Navigation = () => {
                 {/* <!-- Section drop down menu--> */}
                 <li className="nav-item">
                   <div className="btn-group dropdown">
-                    <a
+                    <p
                       className="nav-link dropdown-toggle px-3"
-                      href="#"
+                      // href="#"
                       id="navbarDropdown2"
                       role="button"
                       data-toggle="dropdown"
@@ -174,7 +123,7 @@ const Navigation = () => {
                       aria-expanded="false"
                     >
                       Sections
-                    </a>
+                    </p>
                     <ul
                       className="dropdown-menu dropdown-costume"
                       aria-labelledby="navbarDropdown"
@@ -233,7 +182,7 @@ const Navigation = () => {
                     Shop
                   </Link>
                 </li>
-                
+
                 {currentUser ? (
                   <>
                     <li className="nav-item">
@@ -248,16 +197,14 @@ const Navigation = () => {
                           aria-expanded="false"
                         />
                         <div className="user-menu dropdown-menu">
-                          <span className="dropdown-item">
-                            User: {displayName}
-                          </span>
-                          <a
+                          <div className="dropdown-item">{displayName}</div>
+                          <p
                             className="dropdown-item"
                             type="button"
                             onClick={SignOutUser}
                           >
                             Sign Out
-                          </a>
+                          </p>
                         </div>
                       </div>
                     </li>
@@ -281,7 +228,9 @@ const Navigation = () => {
                     onClick={toggleClass}
                   >
                     <i className="fa fa-shopping-cart" aria-hidden="true">
-                      <span className="pl-2">{cartCount > 0 ? cartCount : null}</span>
+                      <span className="pl-2">
+                        {cartCount > 0 ? cartCount : null}
+                      </span>
                     </i>
                   </button>
                 </li>
@@ -292,7 +241,8 @@ const Navigation = () => {
         {/* <!--Navbar end--> */}
       </div>
       <Cart />
-      <Outlet />
+      <ScrollToTopBtn />
+      {/* <Outlet /> */}
     </>
   );
 };

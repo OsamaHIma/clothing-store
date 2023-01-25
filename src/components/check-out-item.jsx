@@ -33,10 +33,10 @@ const CheckOutItem = ({ item }) => {
     <article aria-label="checkout item">
       <hr />
       <section className="row checkoutItem" aria-label="checkout item">
-        <div className="col-md-4 pr-0">
+        <div className="col-md-4 pl-0">
           <img
             src={imageUrl}
-            className="img-fluid rounded-right w-50"
+            className="img-fluid rounded w-50"
             alt={name}
           />
         </div>

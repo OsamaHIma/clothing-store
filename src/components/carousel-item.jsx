@@ -15,16 +15,6 @@ const CarouselItem = ({ category }) => {
     newClass = "new";
   }
 
-  // switch (id) {
-  //   case 1:
-  //     active = "active";
-  //   case 3:
-  //     type = "sales";
-  //   case 5:
-  //     newClass = "new";
-  //     break;
-  // }
-  console.log(active);
   return (
     <div className={`carousel-item ${active}`} key={id}>
       <div className="container">

@@ -11,12 +11,11 @@ import {
 } from "./utils/firebase/firebase";
 import { setCurrentUser } from "./store/features/userSlice";
 import { useDispatch } from "react-redux";
-import Footer from "./Routes/footer";
 import ClipLoader from "react-spinners/ClipLoader";
-import ScrollToTopBtn from "./components/scroll to top btn";
 
 import "./scss/loader.scss";
 const App = () => {
+  // Preloader
   const override = {
     borderColor: "#eee",
   };
@@ -25,6 +24,8 @@ const App = () => {
   useEffect(() => {
     setLoading(false);
   }, []);
+
+  // User Auth
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
@@ -34,6 +35,7 @@ const App = () => {
     });
     return unsubscribe;
   }, []);
+
   return (
     <>
       {loading ? (
@@ -50,12 +52,10 @@ const App = () => {
       ) : (
         <Routes>
           <Route path="/" element={<Navigation />}>
-            {/* <Route path="/" element={<ScrollToTopBtn />}> */}
-              <Route index element={<Home />} />
-              <Route path="auth" element={<Authentication />} />
-              <Route path="shop/*" element={<Shop />} />
-              <Route path="check-out" element={<CheckOut />} />
-            {/* </Route> */}
+            <Route index element={<Home />} />
+            <Route path="auth" element={<Authentication />} />
+            <Route path="shop/*" element={<Shop />} />
+            <Route path="check-out" element={<CheckOut />} />
           </Route>
         </Routes>
       )}

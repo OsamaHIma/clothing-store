@@ -25,8 +25,9 @@ const ProductCard = ({ product }) => {
         </div>
         <button
         type="button"
-          className="btn btn-success w-50 mx-auto px-2"
+          className="btn btn-danger w-50 mx-auto px-2"
           onClick={addProductToCart}
+          // style={{backgroundColor:"#ff3956", border:"none"}}
         >
           Add to cart
           <i

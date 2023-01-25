@@ -1,0 +1,35 @@
+.star {
+    color: #fcb831;
+}
+.brands {
+    .sliders a {
+        position: static;
+        display: inline-flex;
+        color: #f4f3f3;
+        background-color: #54cad7;
+        padding: 7px 15px;
+        border: 1px solid #0bd5ec;
+        border-radius: 3px;
+    }
+    .carousel-item.active,
+    .carousel-item-next,
+    .carousel-item-prev {
+        display: flex;
+    }
+    .brand {
+        p {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        img {
+            width: 31%;
+            margin-bottom: 1.1rem;
+            margin-left: 0.5rem;
+        }
+        .hm {
+            position: relative;
+            left: 71px;
+            top: -24px;
+        }
+    }
+}
