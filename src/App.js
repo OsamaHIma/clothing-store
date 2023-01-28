@@ -13,7 +13,7 @@ import { setCurrentUser } from "./store/features/userSlice";
 import { useDispatch } from "react-redux";
 import ClipLoader from "react-spinners/ClipLoader";
 
-import "./scss/loader.scss";
+import "./scss/preloader.scss";
 const App = () => {
   // Preloader
   const override = {
@@ -39,15 +39,29 @@ const App = () => {
   return (
     <>
       {loading ? (
-        <div className="loader-wrapper">
-          <ClipLoader
-            color={"#222"}
-            loading={loading}
-            cssOverride={override}
-            size={150}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
+        // <div className="loader-wrapper">
+        //   <ClipLoader
+        //     color={"#222"}
+        //     loading={loading}
+        //     cssOverride={override}
+        //     size={150}
+        //     aria-label="Loading Spinner"
+        //     data-testid="loader"
+        //   />
+        // </div>
+        <div className="preloader">
+          <div className="preloader-wrapper">
+            <div className="loading">
+              {/* <div className="text-center">
+            <div className="spinner-border text-light" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div> */}
+              <div className="circle"></div>
+              <div className="circle"></div>
+              <div className="circle"></div>
+            </div>
+          </div>
         </div>
       ) : (
         <Routes>

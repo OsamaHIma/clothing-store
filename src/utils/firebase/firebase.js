@@ -105,7 +105,7 @@ export const signInUserWithEmailAndPassword = async (email, password) => {
 };
 
 export const SignOutUser = async () => {
-  if (window.confirm("you sure?") === true) {
+  if (window.confirm("You sure?") === true) {
     await signOut(auth);
   } else {
     return;

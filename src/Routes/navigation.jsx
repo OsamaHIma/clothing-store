@@ -2,7 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../images/crown.svg";
 import { SignOutUser } from "../utils/firebase/firebase";
 import Cart from "./cart";
-import "../scss/navigation.styles copy.scss";
+import "../scss/navigation.styles.scss";
 import "../scss/cart.scss";
 import { useSelector } from "react-redux";
 import ScrollToTopBtn from "../components/scroll to top btn";
@@ -196,13 +196,22 @@ const Navigation = () => {
                           aria-haspopup="true"
                           aria-expanded="false"
                         />
-                        <div className="user-menu dropdown-menu">
-                          <div className="dropdown-item">{displayName}</div>
+                        <div
+                          className="user-menu dropdown-menu"
+                          style={{ width: "180px" }}
+                        >
+                          <div
+                            className="dropdown-item disabled px-2"
+                            style={{ fontSize: "14px" }}
+                          >
+                            <i className="fas fa-user px-2"></i> {displayName}
+                          </div>
                           <p
-                            className="dropdown-item"
+                            className="dropdown-item mb-0 px-2"
                             type="button"
                             onClick={SignOutUser}
                           >
+                            <i className="fas fa-sign-out px-2"></i>
                             Sign Out
                           </p>
                         </div>
