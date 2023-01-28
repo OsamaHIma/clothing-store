@@ -52,11 +52,6 @@ const App = () => {
         <div className="preloader">
           <div className="preloader-wrapper">
             <div className="loading">
-              {/* <div className="text-center">
-            <div className="spinner-border text-light" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div> */}
               <div className="circle"></div>
               <div className="circle"></div>
               <div className="circle"></div>
