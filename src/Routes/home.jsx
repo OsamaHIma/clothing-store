@@ -1,5 +1,5 @@
 import Directory from "../components/directory";
-import "../scss/categories.styles copy.scss";
+import "../scss/categories.styles.scss";
 import { Outlet } from "react-router-dom";
 const Home = () => {
   const categories = [
