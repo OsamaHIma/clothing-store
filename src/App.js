@@ -11,14 +11,10 @@ import {
 } from "./utils/firebase/firebase";
 import { setCurrentUser } from "./store/features/userSlice";
 import { useDispatch } from "react-redux";
-import ClipLoader from "react-spinners/ClipLoader";
 
 import "./scss/preloader.scss";
 const App = () => {
   // Preloader
-  const override = {
-    borderColor: "#eee",
-  };
   let [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -39,16 +35,6 @@ const App = () => {
   return (
     <>
       {loading ? (
-        // <div className="loader-wrapper">
-        //   <ClipLoader
-        //     color={"#222"}
-        //     loading={loading}
-        //     cssOverride={override}
-        //     size={150}
-        //     aria-label="Loading Spinner"
-        //     data-testid="loader"
-        //   />
-        // </div>
         <div className="preloader">
           <div className="preloader-wrapper">
             <div className="loading">
