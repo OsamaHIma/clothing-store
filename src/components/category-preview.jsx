@@ -4,11 +4,11 @@ import CategoryPreviewCard from "./category-preview-card";
 const CategoryPreview = ({ title, products }) => {
   return (
     <section
-      className="category-preview container-fluid my-4"
+      className="category-preview container-fluid my-4 mx-3"
       aria-label={`${title}-category`}
     >
       <div className="category-text-container d-flex justify-content-between">
-        <h3 className="mr-3">{title.toUpperCase()}</h3>
+        <h3 className="mx-3">{title.toUpperCase()}</h3>
         <Link className="nav-link" to={title}>
           {/* // style={{ position: "absolute", right: "25px" }} */}
           See more
