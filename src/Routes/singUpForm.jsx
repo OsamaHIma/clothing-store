@@ -105,6 +105,7 @@ const SignUp = () => {
           placeholder="Password"
           required
           minLength={6}
+          autoComplete="true"
         />
         <i
           className="fa fa-eye float-right"
@@ -122,6 +123,7 @@ const SignUp = () => {
           placeholder="Confirm Password"
           required
           minLength={6}
+          autoComplete="true"
         />
         <hr />
         <button

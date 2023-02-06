@@ -12,14 +12,11 @@ export const toggleClass = () => {
 };
 
 const Navigation = () => {
-
   const { currentUser } = useSelector((store) => store.user);
-  console.log(currentUser);
-  const { displayName } = currentUser
-    ? currentUser.providerData[0]
-    : { displayName: "loading" };
-  const photoURL = `https://api.dicebear.com/5.x/micah/svg?size=48`;
-  // console.log(currentUser.providerData);
+
+  if (currentUser) {
+    var { displayName, photoURL } = currentUser;
+  }
 
   const { cartCount } = useSelector((store) => store.cart);
   return (
@@ -134,7 +131,7 @@ const Navigation = () => {
                           src={photoURL}
                           alt="avatar"
                           type="button"
-                          className="w-100 rounded-circle dropdown-toggle dropdown-toggle-split"
+                          className="w-50 rounded-circle dropdown-toggle dropdown-toggle-split"
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"

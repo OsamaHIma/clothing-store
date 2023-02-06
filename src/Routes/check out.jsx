@@ -18,7 +18,7 @@ const CheckOut = () => {
       ))}
       <h4 className="mt-5">Total: <span
       className="text-success">${cartTotal}</span></h4>
-      <PaymentForm />
+      <PaymentForm amount={cartTotal} />
     </section>
   );
 };
