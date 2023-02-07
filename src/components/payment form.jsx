@@ -69,11 +69,11 @@ const PaymentForm = ({ amount }) => {
         />
       ) : null}
       <div className="cc-types container text-center">
-        <img className="cc-types__img cc-types__img--amex" alt="amex" />
-        <img className="cc-types__img cc-types__img--visa" alt="visa"  />
-        <img className="cc-types__img cc-types__img--mastercard" alt="master card" />
-        <img className="cc-types__img cc-types__img--disc" alt="disc" />
-        <img className="cc-types__img cc-types__img--genric" alt="generic" />
+        <img className="cc-types__img cc-types__img--amex" />
+        <img className="cc-types__img cc-types__img--visa" />
+        <img className="cc-types__img cc-types__img--mastercard" />
+        <img className="cc-types__img cc-types__img--disc" />
+        <img className="cc-types__img cc-types__img--genric" />
       </div>
       <form onSubmit={paymentHandler}>
         <div className="container card-container py-3 px-4 rounded my-4">
