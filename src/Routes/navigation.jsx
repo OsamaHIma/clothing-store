@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, NavLink } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../images/crown.svg";
 import { SignOutUser } from "../utils/firebase/firebase";
 import Cart from "./cart";
@@ -21,7 +21,7 @@ const Navigation = () => {
   const { cartCount } = useSelector((store) => store.cart);
   return (
     <>
-      <div className="row d-block">
+      <div className="row d-block mb-3">
         {/* <!--Navbar start--> */}
         <nav className="navbar navbar-expand-lg navbar-light bg-white px-3">
           <div className="container-fluid align-items-baseline">
@@ -45,10 +45,10 @@ const Navigation = () => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav ml-auto">
-                <li className="nav-item active">
-                  <Link className="nav-link px-3" to={"/"}>
-                    Home <span className="sr-only">(current)</span>
-                  </Link>
+                <li className="nav-item">
+                  <NavLink end className="nav-link px-3" to={"/"}>
+                    Home
+                  </NavLink>
                 </li>
                 {/* <!-- Section drop down menu--> */}
                 <li className="nav-item">
@@ -111,16 +111,10 @@ const Navigation = () => {
                     </ul>
                   </div>
                 </li>
-
-                {/* <li className=" nav-item">
-                  <a className="nav-link px-3" href="#">
-                    Advanced search
-                  </a>
-                </li> */}
                 <li className="nav-item">
-                  <Link className="nav-link px-3" to={"/shop"}>
+                  <NavLink className="nav-link px-3" to={"/shop"}>
                     Shop
-                  </Link>
+                  </NavLink>
                 </li>
 
                 {currentUser ? (
@@ -133,8 +127,8 @@ const Navigation = () => {
                           type="button"
                           className="w-50 rounded-circle dropdown-toggle dropdown-toggle-split"
                           data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
+                          // aria-haspopup="true"
+                          // aria-expanded="false"
                         />
                         <div
                           className="user-menu dropdown-menu"

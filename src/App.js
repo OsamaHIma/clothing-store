@@ -12,7 +12,7 @@ import {
 import { setCurrentUser } from "./store/features/userSlice";
 import { useDispatch } from "react-redux";
 
-import "./scss/preloader.scss";
+import Preloader from "./components/preloader";
 const App = () => {
   // Preloader
   let [loading, setLoading] = useState(true);
@@ -35,15 +35,7 @@ const App = () => {
   return (
     <>
       {loading ? (
-        <div className="preloader">
-          <div className="preloader-wrapper">
-            <div className="loading">
-              <div className="circle"></div>
-              <div className="circle"></div>
-              <div className="circle"></div>
-            </div>
-          </div>
-        </div>
+        <Preloader />
       ) : (
         <Routes>
           <Route path="/" element={<Navigation />}>
