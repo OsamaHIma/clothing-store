@@ -61,7 +61,7 @@ const SignIn = () => {
     <section className="sign-in col-md-6">
       <section className="container">
         <h2 className="mb-4">Have an account?</h2>
-        <p>Sign in with Email and Password OR Google Sign in </p>
+        <p>Sign in with Email and Password </p>
         <form onSubmit={submitHandler} className="my-md-4 w-md-75">
           <FormInput
             label="Email"
@@ -94,13 +94,14 @@ const SignIn = () => {
           <hr />
           <button
             type="submit"
-            className="btn px-5 py-3 mt-3 submit"
+            className="btn px-5 py-3 mt-3 submit w-100"
           >
             Sign In
           </button>
+          <p className="mb-0 mt-3 text-center">OR Sign in with Google</p>
           <button
             type="button"
-            className="btn btn-primary px-3 py-3 mt-3 ml-5"
+            className="btn btn-primary px-3 py-3 my-3 w-100"
             onClick={SignInWithGoogle}
           >
             Sign In with Google

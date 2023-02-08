@@ -25,7 +25,7 @@ const Navigation = () => {
       <div className="row d-block mb-3">
         {/* <!--Navbar start--> */}
         <nav className="navbar navbar-expand-lg navbar-light bg-white px-3">
-          <div className="container-fluid align-items-baseline">
+          <div className="container px-2 align-items-baseline">
             <Link className="logo-container nav-brand" to={"/"}>
               <CrownLogo />
             </Link>
@@ -55,8 +55,7 @@ const Navigation = () => {
                 <li className="nav-item">
                   <div className="btn-group dropdown">
                     <p
-                      className="nav-link dropdown-toggle px-3"
-                      // href="#"
+                      className="nav-link dropdown-toggle px-3 mb-0"
                       id="navbarDropdown2"
                       role="button"
                       data-toggle="dropdown"
@@ -119,14 +118,13 @@ const Navigation = () => {
                 </li>
 
                 {currentUser ? (
-                  <>
                     <li className="nav-item">
-                      <div className="btn-group">
+                      <div className="nav-link d-inline-block btn-group">
                         <img
                           src={photoURL}
                           alt="avatar"
                           type="button"
-                          className="w-50 rounded-circle dropdown-toggle dropdown-toggle-split"
+                          className="w-50 ml-2 rounded-circle dropdown-toggle dropdown-toggle-split"
                           data-toggle="dropdown"
                           // aria-haspopup="true"
                           // aria-expanded="false"
@@ -159,7 +157,6 @@ const Navigation = () => {
                         </div>
                       </div>
                     </li>
-                  </>
                 ) : (
                   <li className="nav-item">
                     <Link className="nav-link px-3" to={"/auth"}>
@@ -171,7 +168,7 @@ const Navigation = () => {
                   <button
                     type="button"
                     aria-label="Cart"
-                    className="ml-3 btn btn-light px-4 border border-secondary text-center"
+                    className="btn btn-light px-4 border border-secondary text-center"
                     data-bs-toggle="tooltip"
                     data-bs-placement="bottom"
                     data-bs-title="Shopping cart"

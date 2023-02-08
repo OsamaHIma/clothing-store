@@ -72,34 +72,34 @@ const Home = () => {
                   src="https://i.ibb.co/cvpntL1/hats.png"
                   className="active"
                   data-slide-to="0"
-                  alt="This guy is for sale"
+                  alt="Hats section"
                 />
 
                 <img
                   data-target="#slider"
                   src="https://i.ibb.co/px2tCc3/jackets.png"
                   data-slide-to="1"
-                  alt="This guy is for sale"
+                  alt="Jackets section"
                 />
 
                 <img
                   data-target="#slider"
                   src="https://i.ibb.co/0jqHpnp/sneakers.png"
                   data-slide-to="2"
-                  alt="This guy is for sale"
+                  alt="sneakers section"
                 />
 
                 <img
                   data-target="#slider"
                   src="https://i.ibb.co/GCCdy8t/womens.png"
                   data-slide-to="3"
-                  alt="This guy is for sale"
+                  alt="women section"
                 />
                 <img
                   data-target="#slider"
                   src="https://i.ibb.co/R70vBrQ/men.png"
                   data-slide-to="4"
-                  alt="This guy is for sale"
+                  alt="men section"
                 />
               </ol>
             </div>

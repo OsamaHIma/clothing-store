@@ -128,7 +128,7 @@ const SignUp = () => {
         <hr />
         <button
           type="submit"
-          className="btn submit px-5 py-3 text-center mt-3"
+          className="btn submit px-5 py-3 text-center my-3 w-100"
         >
           Sign Up
         </button>
