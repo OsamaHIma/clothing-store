@@ -1,5 +1,7 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useDispatch, useSelector } from "react-redux";
+import { addItemToOrders } from "../ordersSlice";
+
 import Alert from "./alert";
 import axios from "axios";
 import "../scss/payment form.scss";
