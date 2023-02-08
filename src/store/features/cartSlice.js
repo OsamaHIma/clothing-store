@@ -1,13 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 
 const initialState = {
   cartItems: [],
   cartCount: 0,
   cartTotal: 0,
 };
-
-// const dispatch = useDispatch();
 
 export const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
@@ -70,7 +67,6 @@ const cartSlice = createSlice({
       state.cartItems = newCartItems;
     },
     clearCartItems: (state, { payload }) => {
-      // dispatch(addItemToOrders(...state.cartItems))
       state.cartItems = [];
       state.cartCount = 0;
       state.cartTotal = 0;

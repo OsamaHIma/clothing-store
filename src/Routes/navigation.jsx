@@ -13,6 +13,7 @@ export const toggleClass = () => {
 
 const Navigation = () => {
   const { currentUser } = useSelector((store) => store.user);
+  const { orders } = useSelector((store) => store.orders);
 
   if (currentUser) {
     var { displayName, photoURL } = currentUser;
@@ -140,6 +141,13 @@ const Navigation = () => {
                           >
                             <i className="fas fa-user px-2"></i> {displayName}
                           </div>
+
+                          {orders ? (
+                            <Link to={"/orders"} className="dropdown-item mb-0 px-2">
+                              <i className="fas fa-box-open px-2"></i>
+                              Orders
+                            </Link>
+                          ) : null}
                           <p
                             className="dropdown-item mb-0 px-2"
                             type="button"

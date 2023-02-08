@@ -13,6 +13,7 @@ import { setCurrentUser } from "./store/features/userSlice";
 import { useDispatch } from "react-redux";
 
 import Preloader from "./components/preloader";
+import Orders from "./Routes/orders";
 const App = () => {
   // Preloader
   let [loading, setLoading] = useState(true);
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="auth" element={<Authentication />} />
             <Route path="shop/*" element={<Shop />} />
             <Route path="check-out" element={<CheckOut />} />
+            <Route path="orders" element={<Orders />} />
           </Route>
         </Routes>
       )}

@@ -1,6 +1,6 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToOrders } from "../ordersSlice";
+import { addItemToOrders } from "../store/features/ordersSlice";
 
 import Alert from "./alert";
 import axios from "axios";
@@ -8,10 +8,11 @@ import "../scss/payment form.scss";
 import { useState } from "react";
 import { clearCartItems } from "../store/features/cartSlice";
 
-const PaymentForm = ({ amount }) => {
+const PaymentForm = ({ amount, cartItems }) => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((store) => store.user);
   const clearCart = () => dispatch(clearCartItems());
+  const pushItemsToOrders = () => dispatch(addItemToOrders(cartItems));
   if (currentUser) var { displayName } = currentUser;
 
   const stripe = useStripe();
@@ -55,8 +56,9 @@ const PaymentForm = ({ amount }) => {
       alert(paymentResult.error.message);
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
+        pushItemsToOrders()
+        clearCart();
         setPayment(true);
-        clearCart()
       }
     }
   };
@@ -83,7 +85,10 @@ const PaymentForm = ({ amount }) => {
         </div>
         <button type="submit" className="btn btn-secondary mb-2">
           {isLoading ? (
-            <div className="spinner-border text-success mx-2" role="status"></div>
+            <div
+              className="spinner-border text-white mx-2"
+              role="status"
+            ></div>
           ) : (
             "Pay now!"
           )}
